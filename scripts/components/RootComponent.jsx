@@ -27,8 +27,8 @@ export default class RootComponent extends React.Component {
     }
   }
 
-  updateLocalStorage() {
-    localStorage.setItem("colorsStorage", JSON.stringify(this.state.colors));
+  updateLocalStorage(colors) {
+    localStorage.setItem("colorsStorage", JSON.stringify(colors));
   }
 
   onAddClick(value) {
@@ -43,17 +43,17 @@ export default class RootComponent extends React.Component {
       this.setState({
         colors
       });
-      this.updateLocalStorage();
+      this.updateLocalStorage(colors);
     }
   }
 
   onFavouriteClick(index) {
     let colors = [...this.state.colors];
-    colors[index].favourite = !colors[index].favourite || true;
+    colors[index].favourite = !colors[index].favourite || false;
     this.setState({
       colors
     });
-    this.updateLocalStorage();
+    this.updateLocalStorage(colors);
   }
 
   onDeleteClick(index) {
@@ -62,7 +62,7 @@ export default class RootComponent extends React.Component {
     this.setState({
       colors
     });
-    this.updateLocalStorage();
+    this.updateLocalStorage(colors);
   }
 
   render() {
